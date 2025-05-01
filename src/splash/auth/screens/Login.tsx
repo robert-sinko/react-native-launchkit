@@ -1,10 +1,5 @@
-import {
-  Image,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import Button from "../../../components/Button";
+import { Image, SafeAreaView, Text, View } from "react-native";
 
 const logo = require("../assets/logo.png");
 
@@ -16,14 +11,10 @@ export default function SplashScreen() {
       </View>
       <View className="mb-4 px-8">
         <View className="mb-4 flex-row">
-          <TouchableOpacity className="w-full rounded-lg bg-emerald-800 p-4">
-            <Text className="text-center color-white">Login</Text>
-          </TouchableOpacity>
+          <Button style="primary" title="Login" />
         </View>
         <View className="mb-4 flex-row">
-          <TouchableOpacity className="w-full rounded-lg bg-white p-4">
-            <Text className="text-center color-black">Login</Text>
-          </TouchableOpacity>
+          <Button title="Register" />
         </View>
         <View className="mb-4 mt-8">
           <Text className="text-center text-sky-700">Continue as guest</Text>
