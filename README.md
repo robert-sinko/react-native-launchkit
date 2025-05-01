@@ -90,7 +90,7 @@ src
 
 - [x] Create new repo
 - [x] Update readme
-- [ ] Install NativeWind
+- [x] Install NativeWind
 - [ ] Create auth feature, add dummy screens, implement navigation
 - [ ] Add settings feature
 - [ ] Implement Dark mode
