@@ -1,7 +1,7 @@
 # rn-playground
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/robert-sinko/rn-playground/refs/heads/main/assets/rn-playground.png" alt="rn-playground Logo" width="200">
+  <img src="https://raw.githubusercontent.com/robert-sinko/rn-playground/refs/heads/main/assets/rn-playground.png" alt="rn-playground Logo" width="360">
 </p>
 
 **A Clear Canvas for Rapid React Native Exploration, Inspired by Bulletproof React**
