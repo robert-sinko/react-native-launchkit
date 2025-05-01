@@ -1,12 +1,24 @@
+import Navigation from "./app/router";
 import "./global.css";
-import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [loaded] = useFonts({
+    PoppinsRegular: require("./app/fonts/Poppins-Regular.ttf"),
+  });
+
+  useEffect(() => {
+    async function prepare() {
+      if (loaded) {
+        await SplashScreen.hideAsync();
+      }
+    }
+    prepare();
+  }, [loaded]);
+
+  return <Navigation />;
 }
