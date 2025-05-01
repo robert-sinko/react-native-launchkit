@@ -10,28 +10,30 @@
 
 ## ✨ Key Features
 
-* **Instant Setup with Expo:** Get up and running quickly with Expo's developer tools and services.
-* **Firebase Integration:** Leverage the power of Firebase for backend needs like authentication and data storage.
-* **NativeWind Styling:** Enjoy the utility-first approach to styling with NativeWind (Tailwind CSS for React Native).w
-* **Redux for State Management:** Implement robust and predictable state management with Redux.
-* **Dark Mode Support:** Provides light/dark modes.
-* **Essential Screens Included:**
-    * **Login:** A ready-to-use login screen.
-    * **Register:** A registration screen for new users.
-    * **Home (Playground):** The central screen where you can start building and testing your React Native ideas.
-    * **Settings:** A basic settings screen for customization.
-* **Clear Canvas Approach:** Provides a minimal yet functional starting point, allowing you to easily add and customize features within a structured environment.
-* **Adheres to Bulletproof React Structure:** Adopts a scalable and maintainable project organization for long-term growth.
+- **Instant Setup with Expo:** Get up and running quickly with Expo's developer tools and services.
+- **Firebase Integration:** Leverage the power of Firebase for backend needs like authentication and data storage.
+- **NativeWind Styling:** Enjoy the utility-first approach to styling with NativeWind (Tailwind CSS for React Native).w
+- **Redux for State Management:** Implement robust and predictable state management with Redux.
+- **Dark Mode Support:** Provides light/dark modes.
+- **Essential Screens Included:**
+  - **Login:** A ready-to-use login screen.
+  - **Register:** A registration screen for new users.
+  - **Home (Playground):** The central screen where you can start building and testing your React Native ideas.
+  - **Settings:** A basic settings screen for customization.
+- **Clear Canvas Approach:** Provides a minimal yet functional starting point, allowing you to easily add and customize features within a structured environment.
+- **Adheres to Bulletproof React Structure:** Adopts a scalable and maintainable project organization for long-term growth.
 
 ## 🚀 Getting Started
 
 1.  **Clone the repository:**
+
     ```bash
     git clone https://github.com/robert-sinko/rn-playground
     cd rn-playground
     ```
 
 2.  **Install dependencies:**
+
     ```bash
     npm install
     # or
@@ -39,6 +41,7 @@
     ```
 
 3.  **Start the Expo development server:**
+
     ```bash
     npx expo start
     # or
@@ -49,10 +52,10 @@
 
 ## 🛠️ Included Integrations
 
-* **Expo:** Simplifies React Native development with tools for building, deploying, and updating your app.
-* **Firebase:** A comprehensive platform for mobile and web development, offering services like authentication, database, storage, and more.
-* **NativeWind:** Brings the utility-first CSS framework Tailwind CSS to React Native for rapid styling.
-* **Redux:** A predictable state container for JavaScript apps, helping you manage complex application state.
+- **Expo:** Simplifies React Native development with tools for building, deploying, and updating your app.
+- **Firebase:** A comprehensive platform for mobile and web development, offering services like authentication, database, storage, and more.
+- **NativeWind:** Brings the utility-first CSS framework Tailwind CSS to React Native for rapid styling.
+- **Redux:** A predictable state container for JavaScript apps, helping you manage complex application state.
 
 ## 📂 Project Structure (Based on Bulletproof React)
 
@@ -91,7 +94,7 @@ src
 - [x] Create new repo
 - [x] Update readme
 - [x] Install NativeWind
-- [ ] Create auth feature, add dummy screens, implement navigation
+- [x] Create auth feature, add dummy screens, implement navigation
 - [ ] Add settings feature
 - [ ] Implement Dark mode
 - [ ] Implement login/logout

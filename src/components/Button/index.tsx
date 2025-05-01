@@ -19,7 +19,12 @@ export default function Button(props: Props) {
 
   return (
     <TouchableOpacity className={buttonStyle} onPress={props.onPress}>
-      <Text className={textStyle}>{props.title}</Text>
+      <Text
+        className={textStyle}
+        fontWeight={props.style === "primary" ? "medium" : "regular"}
+      >
+        {props.title}
+      </Text>
     </TouchableOpacity>
   );
 }

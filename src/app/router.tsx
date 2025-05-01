@@ -1,5 +1,11 @@
-import SplashScreen from "../splash/auth/screens/Login";
-import { createStaticNavigation } from "@react-navigation/native";
+import Text from "../components/Text";
+import LoginScreen from "../features/auth/screens/Login";
+import RegisterScreen from "../features/auth/screens/Register";
+import SplashScreen from "../features/splash/screens/Splash";
+import {
+  createStaticNavigation,
+  StaticParamList,
+} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const RootStack = createNativeStackNavigator({
@@ -17,8 +23,42 @@ const RootStack = createNativeStackNavigator({
         headerShown: false,
       },
     },
+    login: {
+      screen: LoginScreen,
+      options: {
+        title: "Login",
+        presentation: "modal",
+        headerShown: false,
+        headerLeft: () => (
+          <>
+            <Text>back</Text>
+          </>
+        ),
+      },
+    },
+    register: {
+      screen: RegisterScreen,
+      options: {
+        title: "Register",
+        presentation: "modal",
+        headerShown: false,
+        headerLeft: () => (
+          <>
+            <Text>back</Text>
+          </>
+        ),
+      },
+    },
   },
 });
+
+type RootStackParamList = StaticParamList<typeof RootStack>;
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamList {}
+  }
+}
 
 const Navigation = createStaticNavigation(RootStack);
 
