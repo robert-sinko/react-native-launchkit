@@ -1,5 +1,9 @@
 # rn-playground
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/robert-sinko/rn-playground/refs/heads/main/assets/rn-playground.png" alt="rn-playground Logo" width="200">
+</p>
+
 **A Clear Canvas for Rapid React Native Exploration, Inspired by Bulletproof React**
 
 `rn-playground` is designed to be a fast and easy-to-use playground for anyone looking to dive into React Native development. Embracing the principles of the [Bulletproof React project structure](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md), it comes pre-configured with popular integrations, allowing you to focus on building and experimenting within a well-organized and scalable foundation.
