@@ -8,7 +8,15 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [loaded] = useFonts({
-    PoppinsRegular: require("./app/fonts/Poppins-Regular.ttf"),
+    FiraSans100: require("./app/fonts/FiraSans-ExtraLight.ttf"),
+    FiraSans200: require("./app/fonts/FiraSans-Light.ttf"),
+    FiraSans300: require("./app/fonts/FiraSans-Medium.ttf"),
+    FiraSans400: require("./app/fonts/FiraSans-Regular.ttf"),
+    FiraSans500: require("./app/fonts/FiraSans-SemiBold.ttf"),
+    FiraSans600: require("./app/fonts/FiraSans-Bold.ttf"),
+    FiraSans700: require("./app/fonts/FiraSans-ExtraBold.ttf"),
+    FiraSans800: require("./app/fonts/FiraSans-Black.ttf"),
+    FiraSans900: require("./app/fonts/FiraSans-Black.ttf"),
   });
 
   useEffect(() => {
