@@ -9,7 +9,7 @@ type Props = TouchableOpacityProps & {
 export default function Button(props: Props) {
   const buttonStyle =
     props.style === "primary"
-      ? "w-full rounded-lg bg-emerald-800 border border-slate-300/50 p-4"
+      ? "w-full rounded-lg bg-emerald-900 border border-slate-300/50 p-4"
       : "w-full rounded-lg bg-slate-200 border border-slate-300/50 p-4";
 
   const textStyle =

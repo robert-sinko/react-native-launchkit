@@ -18,6 +18,7 @@
     "expo-status-bar": "~2.2.3",
     "nativewind": "^4.1.23",
     "react": "19.0.0",
+    "react-hook-form": "^7.56.1",
     "react-native": "0.79.1",
     "react-native-reanimated": "^3.16.2",
     "react-native-safe-area-context": "^5.4.0",
