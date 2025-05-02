@@ -1,6 +1,7 @@
 import Text from "../components/Text";
 import LoginScreen from "../features/auth/screens/Login";
 import RegisterScreen from "../features/auth/screens/Register";
+import HomeScreen from "../features/home/screens/Home";
 import SplashScreen from "../features/splash/screens/Splash";
 import {
   createStaticNavigation,
@@ -47,6 +48,13 @@ const RootStack = createNativeStackNavigator({
             <Text>back</Text>
           </>
         ),
+      },
+    },
+    home: {
+      screen: HomeScreen,
+      options: {
+        headerShown: false,
+        animation: "none",
       },
     },
   },

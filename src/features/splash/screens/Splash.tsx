@@ -1,3 +1,4 @@
+import Anchor from "../../../components/Anchor";
 import Button from "../../../components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { Image, SafeAreaView, Text, View } from "react-native";
@@ -26,8 +27,11 @@ export default function SplashScreen() {
             onPress={() => navigation.navigate("register")}
           />
         </View>
-        <View className="mb-4 mt-8">
-          <Text className="text-center text-sky-700">Continue as guest</Text>
+        <View className="mb-4 mt-8 items-center">
+          <Anchor
+            title="Continue as guest"
+            onPress={() => navigation.navigate("home")}
+          />
         </View>
       </View>
     </SafeAreaView>
