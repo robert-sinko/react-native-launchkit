@@ -2,10 +2,14 @@ import Anchor from "../../../components/Anchor";
 import Button from "../../../components/Button";
 import Text from "../../../components/Text";
 import TextInput from "../../../components/TextInput";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, TouchableOpacity, View } from "react-native";
+import colors from "tailwindcss/colors";
 
 export default function LoginScreen() {
+  const [showPassword, setShowPassword] = useState(false);
   const {
     control,
     handleSubmit,
@@ -44,12 +48,25 @@ export default function LoginScreen() {
               required: true,
             }}
             render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                placeholder="Enter your password"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
+              <View>
+                <TextInput
+                  placeholder="Enter your password"
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  secureTextEntry={!showPassword}
+                />
+                <TouchableOpacity
+                  className="absolute right-0 h-full items-center justify-center px-5"
+                  onPress={() => setShowPassword((prev) => !prev)}
+                >
+                  <FontAwesome
+                    name={showPassword ? "eye" : "eye-slash"}
+                    size={24}
+                    color={colors.slate[400]}
+                  />
+                </TouchableOpacity>
+              </View>
             )}
             name="password"
           />
