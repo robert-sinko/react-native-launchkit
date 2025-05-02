@@ -1,16 +1,25 @@
 import Text from "../Text";
+import { ReactElement, ReactNode } from "react";
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
-type Props = TouchableOpacityProps & {
-  title: string;
+type CommonProps = TouchableOpacityProps & {
   style?: "primary" | "secondary";
 };
+type Props =
+  | (CommonProps & {
+      title: string;
+      children?: never;
+    })
+  | (CommonProps & {
+      title?: never;
+      children: ReactNode;
+    });
 
 export default function Button(props: Props) {
   const buttonStyle =
     props.style === "primary"
-      ? "w-full rounded-lg bg-emerald-900 border border-slate-300/50 p-4"
-      : "w-full rounded-lg bg-slate-200 border border-slate-300/50 p-4";
+      ? "w-full rounded-lg bg-emerald-900 border border-slate-300/50 h-14 justify-center items-center"
+      : "w-full rounded-lg bg-slate-200 border border-slate-300/50 h-14 justify-center items-center";
 
   const textStyle =
     props.style === "primary"
@@ -23,7 +32,7 @@ export default function Button(props: Props) {
         className={textStyle}
         fontWeight={props.style === "primary" ? "medium" : "regular"}
       >
-        {props.title}
+        {props.title ?? props.children}
       </Text>
     </TouchableOpacity>
   );

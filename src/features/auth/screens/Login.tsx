@@ -1,7 +1,9 @@
 import Anchor from "../../../components/Anchor";
 import Button from "../../../components/Button";
+import Divider from "../../../components/Divider";
 import Text from "../../../components/Text";
 import TextInput from "../../../components/TextInput";
+import GoogleLogo from "../assets/google-logo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -76,6 +78,26 @@ export default function LoginScreen() {
         </View>
         <View className="pt-8">
           <Button title="Login" style="primary" />
+        </View>
+        <View className="py-14 pb-10">
+          <Divider text="OR" />
+        </View>
+        <View className="flex-row gap-3 pt-4">
+          <View className="flex-1">
+            <Button style="secondary">
+              <FontAwesome name="facebook" size={24} color="#1877F2" />
+            </Button>
+          </View>
+          <View className="flex-1">
+            <Button style="secondary">
+              <GoogleLogo />
+            </Button>
+          </View>
+          <View className="flex-1">
+            <Button>
+              <FontAwesome name="apple" size={24} />
+            </Button>
+          </View>
         </View>
       </View>
     </SafeAreaView>
