@@ -16,7 +16,9 @@ export default function Anchor(props: Props) {
 
   return (
     <TouchableOpacity onPress={props.onPress}>
-      <Text className={`${sizeClass} text-sky-700`}>{props.title}</Text>
+      <Text className={`${sizeClass} text-sky-700 dark:text-sky-300`}>
+        {props.title}
+      </Text>
     </TouchableOpacity>
   );
 }

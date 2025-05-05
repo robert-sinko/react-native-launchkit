@@ -14,9 +14,9 @@ const LightTheme = {
   dark: false,
   colors: {
     ...DefaultTheme.colors,
-    card: colors.slate[200],
-    text: colors.slate[900],
-    background: colors.slate[950],
+    card: colors.emerald[200],
+    text: colors.emerald[900],
+    background: colors.slate[50],
   },
 };
 const DarkTheme = {
@@ -24,9 +24,9 @@ const DarkTheme = {
   dark: true,
   colors: {
     ...DefaultTheme.colors,
-    card: colors.slate[900],
-    text: colors.slate[200],
-    background: colors.slate[950],
+    card: colors.emerald[900],
+    text: colors.emerald[200],
+    background: colors.emerald[950],
   },
 };
 
