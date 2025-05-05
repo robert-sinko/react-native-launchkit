@@ -4,6 +4,7 @@ import Divider from "../../../components/Divider";
 import Text from "../../../components/Text";
 import TextInput from "../../../components/TextInput";
 import GoogleLogo from "../assets/google-logo";
+import BackButton from "../components/BackButton";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -24,7 +25,8 @@ export default function LoginScreen() {
   });
   return (
     <SafeAreaView className="flex-1">
-      <View className="p-6 pt-24">
+      <BackButton />
+      <View className="p-6 pt-1">
         <Text className="text-4xl">Welcome back! Glad to see you, Again!</Text>
         <View className="pt-10">
           <Controller

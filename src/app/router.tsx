@@ -25,7 +25,7 @@ const RootStack = createNativeStackNavigator({
       options: {
         title: "Login",
         presentation: "modal",
-        headerLeft: () => <BackButton />,
+        headerShown: false,
       },
     },
     register: {
