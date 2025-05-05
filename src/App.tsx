@@ -1,12 +1,38 @@
 import Navigation from "./app/router";
 import "./global.css";
+import { DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { useColorScheme } from "nativewind";
 import { useEffect } from "react";
+import colors from "tailwindcss/colors";
 
 SplashScreen.preventAutoHideAsync();
 
+const LightTheme = {
+  ...DefaultTheme,
+  dark: false,
+  colors: {
+    ...DefaultTheme.colors,
+    card: colors.slate[200],
+    text: colors.slate[900],
+    background: colors.slate[950],
+  },
+};
+const DarkTheme = {
+  ...DefaultTheme,
+  dark: true,
+  colors: {
+    ...DefaultTheme.colors,
+    card: colors.slate[900],
+    text: colors.slate[200],
+    background: colors.slate[950],
+  },
+};
+
 export default function App() {
+  const { colorScheme } = useColorScheme();
+
   const [loaded] = useFonts({
     FiraSans100: require("./app/fonts/FiraSans-ExtraLight.ttf"),
     FiraSans200: require("./app/fonts/FiraSans-Light.ttf"),
@@ -28,5 +54,7 @@ export default function App() {
     prepare();
   }, [loaded]);
 
-  return <Navigation />;
+  return (
+    <Navigation theme={colorScheme === "light" ? LightTheme : DarkTheme} />
+  );
 }
