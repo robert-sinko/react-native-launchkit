@@ -1,4 +1,5 @@
 import Text from "../components/Text";
+import BackButton from "../features/auth/components/BackButton";
 import LoginScreen from "../features/auth/screens/Login";
 import RegisterScreen from "../features/auth/screens/Register";
 import HomeScreen from "../features/home/screens/Home";
@@ -24,12 +25,7 @@ const RootStack = createNativeStackNavigator({
       options: {
         title: "Login",
         presentation: "modal",
-        headerShown: false,
-        headerLeft: () => (
-          <>
-            <Text>back</Text>
-          </>
-        ),
+        headerLeft: () => <BackButton />,
       },
     },
     register: {

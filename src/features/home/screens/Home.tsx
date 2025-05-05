@@ -9,7 +9,7 @@ export default function HomeScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   return (
-    <SafeAreaView className="flex-1 bg-slate-100">
+    <SafeAreaView className="flex-1">
       <TouchableOpacity
         className="absolute right-8 top-16 h-12 w-12 items-center justify-center"
         onPress={() => navigation.navigate("settingsColorScheme")}

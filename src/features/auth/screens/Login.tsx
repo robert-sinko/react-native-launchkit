@@ -23,7 +23,7 @@ export default function LoginScreen() {
     },
   });
   return (
-    <SafeAreaView className="flex-1 bg-slate-100">
+    <SafeAreaView className="flex-1">
       <View className="p-6 pt-24">
         <Text className="text-4xl">Welcome back! Glad to see you, Again!</Text>
         <View className="pt-10">

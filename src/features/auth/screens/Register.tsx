@@ -18,7 +18,7 @@ export default function RegisterScreen() {
     },
   });
   return (
-    <SafeAreaView className="flex-1 bg-slate-100">
+    <SafeAreaView className="flex-1">
       <View className="p-6 pt-24">
         <Text className="text-4xl">Welcome!</Text>
         <View className="pb-1 pt-10">

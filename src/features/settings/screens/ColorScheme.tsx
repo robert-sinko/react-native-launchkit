@@ -21,7 +21,7 @@ export default function ColorSchemeScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-slate-100">
+    <SafeAreaView className="flex-1">
       <ScrollView>
         <TouchableOpacity
           className="h-14 justify-center border-b border-slate-200 pl-4"

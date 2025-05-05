@@ -1,4 +1,5 @@
 import { Text as RnText, TextProps } from "react-native";
+import { twMerge } from "tailwind-merge";
 
 type Props = TextProps & {
   fontWeight?:
@@ -28,7 +29,7 @@ export default function Text(props: Props) {
 
   return (
     <RnText
-      className={props.className}
+      className={twMerge("text-black dark:text-white", props.className)}
       style={{
         fontFamily,
       }}
