@@ -1,12 +1,15 @@
+import { AuthContext } from "./app/context/AuthContext";
 import Navigation from "./app/router";
 import "./global.css";
 import { DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useColorScheme } from "nativewind";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import colors from "tailwindcss/colors";
 
+const auth = getAuth();
 SplashScreen.preventAutoHideAsync();
 
 const LightTheme = {
@@ -32,6 +35,8 @@ const DarkTheme = {
 
 export default function App() {
   const { colorScheme } = useColorScheme();
+  const [userId, setUserId] = useState<string | null>(null);
+  const [loadingUser, setLoadingUser] = useState<boolean>(true);
 
   const [loaded] = useFonts({
     FiraSans100: require("./app/fonts/FiraSans-ExtraLight.ttf"),
@@ -47,14 +52,30 @@ export default function App() {
 
   useEffect(() => {
     async function prepare() {
-      if (loaded) {
+      if (loaded && !loadingUser) {
         await SplashScreen.hideAsync();
       }
     }
     prepare();
-  }, [loaded]);
+  }, [loaded, loadingUser]);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
+        setUserId(uid);
+      } else {
+        setUserId(null);
+      }
+      setLoadingUser(false);
+    });
+  }, []);
 
   return (
-    <Navigation theme={colorScheme === "light" ? LightTheme : DarkTheme} />
+    <AuthContext.Provider value={userId}>
+      <Navigation theme={colorScheme === "light" ? LightTheme : DarkTheme} />
+    </AuthContext.Provider>
   );
 }

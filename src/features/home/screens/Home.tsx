@@ -14,7 +14,7 @@ export default function HomeScreen() {
         className="absolute right-8 top-16 h-12 w-12 items-center justify-center"
         onPress={() => navigation.navigate("settingsColorScheme")}
       >
-        <Fontawesome name="cog" size={32} />
+        <Fontawesome name="cog" size={32} color={"gray"} />
       </TouchableOpacity>
       <View className="p-6 pt-24">
         <Text className="text-4xl">Welcome to the Home Screen!</Text>
