@@ -6,7 +6,7 @@ export default function TextInput(props: Props) {
   return (
     <RnTextInput
       {...props}
-      className="rounded-lg border border-slate-300/50 bg-slate-200/40 p-5 placeholder:text-slate-500"
+      className="rounded-lg border border-slate-300/50 bg-slate-200/40 p-5 placeholder:text-slate-500 dark:border-slate-300/20 dark:bg-slate-950 dark:text-white"
     />
   );
 }
