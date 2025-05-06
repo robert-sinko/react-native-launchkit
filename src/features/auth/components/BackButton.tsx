@@ -1,4 +1,3 @@
-import Text from "../../../components/Text";
 import Fontawesome from "@expo/vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 import { Appearance, TouchableOpacity, View } from "react-native";
