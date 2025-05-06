@@ -1,6 +1,7 @@
 import Button from "../../../components/Button";
 import Text from "../../../components/Text";
 import TextInput from "../../../components/TextInput";
+import BackButton from "../components/BackButton";
 import { Controller, useForm } from "react-hook-form";
 import { SafeAreaView, View } from "react-native";
 
@@ -19,7 +20,8 @@ export default function RegisterScreen() {
   });
   return (
     <SafeAreaView className="flex-1">
-      <View className="p-6 pt-24">
+      <BackButton />
+      <View className="p-6 pt-1">
         <Text className="text-4xl">Welcome!</Text>
         <View className="pb-1 pt-10">
           <Controller
@@ -29,24 +31,7 @@ export default function RegisterScreen() {
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
-                placeholder="Enter your name"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-            name="name"
-          />
-        </View>
-        <View className="py-1">
-          <Controller
-            control={control}
-            rules={{
-              required: true,
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                placeholder="Enter your email"
+                placeholder="Email"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -55,7 +40,7 @@ export default function RegisterScreen() {
             name="email"
           />
         </View>
-        <View className="py-1">
+        <View className="py-2">
           <Controller
             control={control}
             rules={{
@@ -63,7 +48,7 @@ export default function RegisterScreen() {
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
-                placeholder="Enter your password"
+                placeholder="Password"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -73,7 +58,7 @@ export default function RegisterScreen() {
             name="password"
           />
         </View>
-        <View className="py-1">
+        <View className="py-2">
           <Controller
             control={control}
             rules={{
@@ -81,7 +66,7 @@ export default function RegisterScreen() {
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
-                placeholder="Confirm your password"
+                placeholder="Confirm password"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
