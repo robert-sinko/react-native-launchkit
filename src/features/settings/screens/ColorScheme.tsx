@@ -1,7 +1,8 @@
 import { Buttons } from "../components/Buttons";
 import { SettingsButton } from "../type/SettingsButton";
-import { useState } from "react";
-import { Appearance, ColorSchemeName, ScrollView } from "react-native";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
+import { Appearance, ScrollView } from "react-native";
 
 const ColorSchemeButtons: SettingsButton[] = [
   {
@@ -19,10 +20,17 @@ const ColorSchemeButtons: SettingsButton[] = [
 ];
 
 export default function ColorSchemeScreen() {
-  const [colorScheme, setColorScheme] = useState<ColorSchemeName>(
-    Appearance.getColorScheme(),
+  const [colorScheme, setColorScheme] = useState<"light" | "dark" | "system">(
+    "system",
   );
-  console.log(Appearance.getColorScheme());
+  useEffect(() => {
+    async function loadColorScheme() {
+      const scheme =
+        (await ReactNativeAsyncStorage.getItem("color-scheme")) ?? "system";
+      setColorScheme(scheme as "light" | "dark" | "system");
+    }
+    loadColorScheme();
+  }, []);
 
   const buttons = ColorSchemeButtons.map((button) => {
     const style = !colorScheme ? "system" : colorScheme;
@@ -36,12 +44,12 @@ export default function ColorSchemeScreen() {
   });
 
   const handleColorSchemeChange = (scheme: string) => {
-    if (["light", "dark"].includes(scheme)) {
-      setColorScheme(scheme === "light" ? "light" : "dark");
-      Appearance.setColorScheme(scheme === "light" ? "light" : "dark");
-      return;
+    setColorScheme(scheme as "light" | "dark" | "system");
+    ReactNativeAsyncStorage.setItem("color-scheme", scheme);
+
+    if (scheme === "light" || scheme === "dark") {
+      Appearance.setColorScheme(scheme as "light" | "dark");
     } else {
-      setColorScheme(null);
       Appearance.setColorScheme(null);
     }
   };

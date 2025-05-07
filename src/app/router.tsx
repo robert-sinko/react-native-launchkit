@@ -13,7 +13,7 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const Settings = createNativeStackNavigator({
+const SettingsStack = createNativeStackNavigator({
   screens: {
     settings: {
       screen: SettingsScreen,
@@ -29,7 +29,7 @@ const Settings = createNativeStackNavigator({
     },
   },
 });
-export type SettingsParamList = StaticParamList<typeof Settings>;
+export type SettingsParamList = StaticParamList<typeof SettingsStack>;
 
 const AppTabs = createBottomTabNavigator({
   screens: {
@@ -49,8 +49,8 @@ const AppTabs = createBottomTabNavigator({
         ),
       },
     },
-    settings: {
-      screen: Settings,
+    settingsStack: {
+      screen: SettingsStack,
       options: {
         title: "Settings",
         headerShown: false,

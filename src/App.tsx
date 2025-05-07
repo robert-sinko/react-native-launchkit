@@ -1,12 +1,14 @@
 import { AuthContext } from "./app/context/AuthContext";
 import Navigation from "./app/router";
 import "./global.css";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 import { DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useColorScheme } from "nativewind";
 import { useEffect, useState } from "react";
+import { Appearance } from "react-native";
 import colors from "tailwindcss/colors";
 
 const auth = getAuth();
@@ -71,6 +73,19 @@ export default function App() {
       }
       setLoadingUser(false);
     });
+  }, []);
+
+  useEffect(() => {
+    async function loadColorScheme() {
+      const scheme =
+        (await ReactNativeAsyncStorage.getItem("color-scheme")) ?? "system";
+      if (scheme === "light" || scheme === "dark") {
+        Appearance.setColorScheme(scheme);
+      } else {
+        Appearance.setColorScheme(null);
+      }
+    }
+    loadColorScheme();
   }, []);
 
   return (
