@@ -96,7 +96,7 @@ src
 - [x] Install NativeWind
 - [x] Create auth feature, add dummy screens, implement navigation
 - [x] Add home feature
-- [ ] Implement Dark mode
+- [x] Implement Dark mode
 - [x] Add settings feature
 - [ ] Implement login/logout
 - [ ] Implement Register
