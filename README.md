@@ -97,7 +97,7 @@ src
 - [x] Create auth feature, add dummy screens, implement navigation
 - [x] Add home feature
 - [ ] Implement Dark mode
-- [ ] Add settings feature
+- [x] Add settings feature
 - [ ] Implement login/logout
 - [ ] Implement Register
 

@@ -2,6 +2,7 @@ import LoginScreen from "../features/auth/screens/Login";
 import RegisterScreen from "../features/auth/screens/Register";
 import HomeScreen from "../features/home/screens/Home";
 import ColorSchemeScreen from "../features/settings/screens/ColorScheme";
+import SettingsScreen from "../features/settings/screens/Settings";
 import SplashScreen from "../features/splash/screens/Splash";
 import { useIsSignedIn, useIsSignedOut } from "./hooks/useIsSignedId";
 import Fontawesome from "@expo/vector-icons/FontAwesome";
@@ -12,7 +13,23 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const MyTabs = createBottomTabNavigator({
+const Settings = createNativeStackNavigator({
+  screens: {
+    settings: {
+      screen: SettingsScreen,
+      options: {},
+    },
+    colorScheme: {
+      screen: ColorSchemeScreen,
+      options: {
+        title: "App Theme",
+      },
+    },
+  },
+});
+export type SettingsParamList = StaticParamList<typeof Settings>;
+
+const AppTabs = createBottomTabNavigator({
   screens: {
     home: {
       screen: HomeScreen,
@@ -30,10 +47,11 @@ const MyTabs = createBottomTabNavigator({
         ),
       },
     },
-    settingsColorScheme: {
-      screen: ColorSchemeScreen,
+    settings: {
+      screen: Settings,
       options: {
         title: "Settings",
+        headerShown: false,
         tabBarIcon: ({ color }) => (
           <Fontawesome
             name="cog"
@@ -87,7 +105,7 @@ const RootStack = createNativeStackNavigator({
       if: useIsSignedIn,
       screens: {
         home: {
-          screen: MyTabs,
+          screen: AppTabs,
           options: {
             headerShown: false,
             animation: "none",
