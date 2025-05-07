@@ -17,7 +17,9 @@ const Settings = createNativeStackNavigator({
   screens: {
     settings: {
       screen: SettingsScreen,
-      options: {},
+      options: {
+        title: "Settings",
+      },
     },
     colorScheme: {
       screen: ColorSchemeScreen,
@@ -100,11 +102,11 @@ const RootStack = createNativeStackNavigator({
         },
       },
     },
-    home: {
-      initialRouteName: "home",
+    app: {
+      initialRouteName: "app",
       if: useIsSignedIn,
       screens: {
-        home: {
+        app: {
           screen: AppTabs,
           options: {
             headerShown: false,
