@@ -28,7 +28,7 @@ const DarkTheme = {
   colors: {
     ...DefaultTheme.colors,
     card: colors.zinc[900],
-    text: colors.emerald[100],
+    text: colors.zinc[100],
     background: colors.black,
   },
 };

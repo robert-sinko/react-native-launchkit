@@ -4,6 +4,12 @@ import Fontawesome from "@expo/vector-icons/FontAwesome";
 import cx from "classnames";
 import { TouchableOpacity, useColorScheme, View } from "react-native";
 
+/**
+ * Settings Button Group.
+ *
+ * Button: Shows a chevron icon to the right of the text.
+ * Selector: Shows a checkbox icon to the right of the text.
+ */
 export function Buttons({
   buttons,
   handlePress,
@@ -15,7 +21,7 @@ export function Buttons({
   const colorScheme = useColorScheme();
 
   return (
-    <View className="m-4 mb-0 flex-1 items-center justify-center rounded-lg bg-slate-100 dark:bg-zinc-900">
+    <View className="m-4 flex-1 items-center justify-center rounded-lg bg-slate-100 dark:bg-zinc-900">
       {buttons.map((button, i) => (
         <TouchableOpacity
           key={i}
@@ -38,12 +44,20 @@ export function Buttons({
             >
               {button.name}
             </Text>
-            <Fontawesome
-              name="chevron-right"
-              size={14}
-              color={colorScheme === "light" ? "black" : "white"}
-              className="ml-auto"
-            />
+            {button.action === "link" && (
+              <Fontawesome
+                name="chevron-right"
+                size={14}
+                color={colorScheme === "light" ? "black" : "white"}
+              />
+            )}
+            {button.action === "checked" && (
+              <Fontawesome
+                name="check"
+                size={14}
+                color={colorScheme === "light" ? "black" : "white"}
+              />
+            )}
           </View>
         </TouchableOpacity>
       ))}

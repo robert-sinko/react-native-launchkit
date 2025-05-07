@@ -1,22 +1,30 @@
 import { SettingsParamList } from "../../../app/router";
 import { Buttons } from "../components/Buttons";
+import { SettingsButton } from "../type/SettingsButton";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native";
 
-const SettingsButtons: {
-  id: string;
-  name: string;
-  icon?: "sun-o" | "sign-out";
-}[] = [
+const AppButtons: SettingsButton[] = [
   {
     id: "theme",
     name: "App Theme",
     icon: "sun-o",
+    action: "link",
   },
   {
     id: "log-out",
     name: "Log Out",
     icon: "sign-out",
+  },
+];
+const LegalButtons: SettingsButton[] = [
+  {
+    id: "terms-of-service",
+    name: "Terms of Service",
+  },
+  {
+    id: "privacy-policy",
+    name: "Privacy Policy",
   },
   {
     id: "delete-account",
@@ -45,11 +53,8 @@ export default function SettingsScreen() {
 
   return (
     <ScrollView>
-      <Buttons
-        buttons={SettingsButtons}
-        handlePress={handlePress}
-        type="button"
-      />
+      <Buttons buttons={AppButtons} handlePress={handlePress} type="button" />
+      <Buttons buttons={LegalButtons} handlePress={handlePress} type="button" />
     </ScrollView>
   );
 }

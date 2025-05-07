@@ -1,86 +1,58 @@
-import Text from "../../../components/Text";
-import Fontawesome from "@expo/vector-icons/FontAwesome";
+import { Buttons } from "../components/Buttons";
+import { SettingsButton } from "../type/SettingsButton";
 import { useState } from "react";
-import {
-  Appearance,
-  ColorSchemeName,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import colors from "tailwindcss/colors";
+import { Appearance, ColorSchemeName, ScrollView } from "react-native";
+
+const ColorSchemeButtons: SettingsButton[] = [
+  {
+    id: "light",
+    name: "Light",
+  },
+  {
+    id: "dark",
+    name: "Dark",
+  },
+  {
+    id: "system",
+    name: "System Default",
+  },
+];
 
 export default function ColorSchemeScreen() {
   const [colorScheme, setColorScheme] = useState<ColorSchemeName>(
     Appearance.getColorScheme(),
   );
+  console.log(Appearance.getColorScheme());
 
-  const handleColorSchemeChange = (scheme: "light" | "dark" | null) => {
-    setColorScheme(scheme);
-    Appearance.setColorScheme(scheme);
+  const buttons = ColorSchemeButtons.map((button) => {
+    const style = !colorScheme ? "system" : colorScheme;
+
+    if (button.id === style) {
+      button.action = "checked";
+    } else {
+      delete button.action;
+    }
+    return button;
+  });
+
+  const handleColorSchemeChange = (scheme: string) => {
+    if (["light", "dark"].includes(scheme)) {
+      setColorScheme(scheme === "light" ? "light" : "dark");
+      Appearance.setColorScheme(scheme === "light" ? "light" : "dark");
+      return;
+    } else {
+      setColorScheme(null);
+      Appearance.setColorScheme(null);
+    }
   };
 
   return (
-    <SafeAreaView className="flex-1">
-      <ScrollView>
-        <TouchableOpacity
-          className="h-14 justify-center border-b border-slate-200 pl-4"
-          onPress={() => handleColorSchemeChange("light")}
-        >
-          <Text
-            className="text-lg"
-            fontWeight={colorScheme === "light" ? "medium" : "regular"}
-          >
-            Light
-          </Text>
-          {colorScheme === "light" && (
-            <Fontawesome
-              name="check"
-              className="absolute right-4"
-              color={colors.green[400]}
-              size={16}
-            />
-          )}
-        </TouchableOpacity>
-        <TouchableOpacity
-          className="h-14 justify-center border-b border-slate-200 pl-4"
-          onPress={() => handleColorSchemeChange("dark")}
-        >
-          <Text
-            className="text-lg"
-            fontWeight={colorScheme === "dark" ? "medium" : "regular"}
-          >
-            Dark
-          </Text>
-          {colorScheme === "dark" && (
-            <Fontawesome
-              name="check"
-              className="absolute right-4"
-              color={colors.green[400]}
-              size={16}
-            />
-          )}
-        </TouchableOpacity>
-        <TouchableOpacity
-          className="h-14 justify-center border-b border-slate-200 pl-4"
-          onPress={() => handleColorSchemeChange(null)}
-        >
-          <Text
-            className="text-lg"
-            fontWeight={colorScheme === null ? "medium" : "regular"}
-          >
-            System
-          </Text>
-          {colorScheme === null && (
-            <Fontawesome
-              name="check"
-              className="absolute right-4"
-              color={colors.green[400]}
-              size={16}
-            />
-          )}
-        </TouchableOpacity>
-      </ScrollView>
-    </SafeAreaView>
+    <ScrollView>
+      <Buttons
+        buttons={buttons}
+        handlePress={handleColorSchemeChange}
+        type="button"
+      />
+    </ScrollView>
   );
 }
