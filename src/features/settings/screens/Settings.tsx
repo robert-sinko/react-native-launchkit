@@ -1,14 +1,7 @@
 import { SettingsParamList } from "../../../app/router";
-import Text from "../../../components/Text";
-import Fontawesome from "@expo/vector-icons/FontAwesome";
+import { Buttons } from "../components/Buttons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import cx from "classnames";
-import {
-  ScrollView,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-} from "react-native";
+import { ScrollView } from "react-native";
 
 const SettingsButtons: {
   id: string;
@@ -32,7 +25,6 @@ const SettingsButtons: {
 ];
 export default function SettingsScreen() {
   const navigation = useNavigation<NavigationProp<SettingsParamList>>();
-  const colorScheme = useColorScheme();
 
   const handlePress = (id: string) => {
     switch (id) {
@@ -53,39 +45,11 @@ export default function SettingsScreen() {
 
   return (
     <ScrollView>
-      <View className="m-4 mb-0 flex-1 items-center justify-center rounded-lg bg-slate-100 dark:bg-zinc-900">
-        {SettingsButtons.map((button, i) => (
-          <TouchableOpacity
-            key={i}
-            className="w-full px-4"
-            onPress={() => handlePress(button.id)}
-          >
-            <View className="flex-row items-center gap-2">
-              {button.icon && (
-                <Fontawesome
-                  name={button.icon}
-                  size={14}
-                  color={colorScheme === "light" ? "black" : "white"}
-                />
-              )}
-              <Text
-                className={cx("flex-1 py-4 text-lg", {
-                  "border-b border-b-slate-200 dark:border-b-zinc-800":
-                    i !== SettingsButtons.length - 1,
-                })}
-              >
-                {button.name}
-              </Text>
-              <Fontawesome
-                name="chevron-right"
-                size={14}
-                color={colorScheme === "light" ? "black" : "white"}
-                className="ml-auto"
-              />
-            </View>
-          </TouchableOpacity>
-        ))}
-      </View>
+      <Buttons
+        buttons={SettingsButtons}
+        handlePress={handlePress}
+        type="button"
+      />
     </ScrollView>
   );
 }
