@@ -99,7 +99,7 @@ src
 - [x] Implement Dark mode
 - [x] Add settings feature
 - [x] Implement login/logout
-- [ ] Implement Register
+- [x] Implement Register
 
 ## 🤝 Contributing
 

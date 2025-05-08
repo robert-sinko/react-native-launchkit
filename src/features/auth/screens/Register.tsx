@@ -6,6 +6,7 @@ import TextInput from "../../../components/TextInput";
 import BackButton from "../components/BackButton";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { SafeAreaView, View } from "react-native";
 import * as yup from "yup";
@@ -15,7 +16,11 @@ const auth = getAuth(app);
 const schema = yup
   .object({
     email: yup.string().label("Email").email().required(),
-    password: yup.string().label("Password").required(),
+    password: yup
+      .string()
+      .required()
+      .min(6, "Password is too short - should be 8 chars minimum.")
+      .label("Password"),
     confirmPassword: yup
       .string()
       .required()
@@ -25,10 +30,12 @@ const schema = yup
   .required();
 
 export default function RegisterScreen() {
+  const [loading, setLoading] = useState(false);
   const {
     control,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -39,20 +46,32 @@ export default function RegisterScreen() {
   });
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    setLoading(true);
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then(
+        (userCredential) => {
+          // User signed up successfully.
+          // The onAuthStateChanged listener will handle the login state.
+        },
+        (error) => {
+          const errorCode = error.code;
 
-    createUserWithEmailAndPassword(auth, data.email, data.password).then(
-      (userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log("User registered:", user);
-      },
-      (error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log("Error registering user:", errorCode, errorMessage);
-      },
-    );
+          if (errorCode === "auth/email-already-in-use") {
+            setError("email", {
+              type: "manual",
+              message: "Email already in use",
+            });
+          } else {
+            setError("email", {
+              type: "manual",
+              message: "Error: " + errorCode,
+            });
+          }
+        },
+      )
+      .finally(() => {
+        setLoading(false);
+      });
   };
   return (
     <SafeAreaView className="flex-1">
@@ -126,6 +145,7 @@ export default function RegisterScreen() {
             title="Register"
             onPress={handleSubmit(onSubmit)}
             style="primary"
+            loading={loading}
           />
         </View>
       </View>
