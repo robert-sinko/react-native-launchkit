@@ -27,12 +27,6 @@ export default function SplashScreen() {
             onPress={() => navigation.navigate("register")}
           />
         </View>
-        <View className="mb-4 mt-8 items-center">
-          <Anchor
-            title="Continue as guest"
-            onPress={() => navigation.navigate("home")}
-          />
-        </View>
       </View>
     </SafeAreaView>
   );

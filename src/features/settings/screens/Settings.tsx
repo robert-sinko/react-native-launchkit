@@ -2,7 +2,10 @@ import { SettingsParamList } from "../../../app/router";
 import { Buttons } from "../components/Buttons";
 import { SettingsButton } from "../type/SettingsButton";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { getAuth, signOut } from "firebase/auth";
 import { ScrollView } from "react-native";
+
+const auth = getAuth();
 
 const AppButtons: SettingsButton[] = [
   {
@@ -37,17 +40,13 @@ export default function SettingsScreen() {
   const handlePress = (id: string) => {
     switch (id) {
       case "theme":
-        // Handle theme change
         navigation.navigate("colorScheme");
         break;
       case "log-out":
-        // Handle log out
-        break;
-      case "delete-account":
-        // Handle delete account
+        signOut(auth);
         break;
       default:
-        break;
+        alert("TODO: implement " + id);
     }
   };
 

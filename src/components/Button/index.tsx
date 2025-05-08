@@ -1,10 +1,14 @@
 import Text from "../Text";
-import { useTheme } from "@react-navigation/native";
 import { ReactNode } from "react";
-import { TouchableOpacity, TouchableOpacityProps } from "react-native";
+import {
+  ActivityIndicator,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from "react-native";
 
 type CommonProps = TouchableOpacityProps & {
   style?: "primary" | "secondary";
+  loading?: boolean;
 };
 type Props =
   | (CommonProps & {
@@ -27,6 +31,13 @@ export default function Button(props: Props) {
       ? "text-center text-white"
       : "text-center text-slate-800 dark:text-white";
 
+  if (props.loading) {
+    return (
+      <TouchableOpacity className={buttonStyle} onPress={() => {}} disabled>
+        <ActivityIndicator />
+      </TouchableOpacity>
+    );
+  }
   return (
     <TouchableOpacity className={buttonStyle} onPress={props.onPress}>
       <Text

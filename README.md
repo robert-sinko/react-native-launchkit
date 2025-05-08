@@ -98,7 +98,7 @@ src
 - [x] Add home feature
 - [x] Implement Dark mode
 - [x] Add settings feature
-- [ ] Implement login/logout
+- [x] Implement login/logout
 - [ ] Implement Register
 
 ## 🤝 Contributing

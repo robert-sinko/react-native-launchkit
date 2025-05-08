@@ -1,28 +1,76 @@
+import { app } from "../../../app/firebaseConfig";
 import Anchor from "../../../components/Anchor";
 import Button from "../../../components/Button";
 import Divider from "../../../components/Divider";
+import ErrorText from "../../../components/ErrorText";
 import Text from "../../../components/Text";
 import TextInput from "../../../components/TextInput";
 import GoogleLogo from "../assets/google-logo";
 import BackButton from "../components/BackButton";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { SafeAreaView, TouchableOpacity, View } from "react-native";
 import colors from "tailwindcss/colors";
+import * as yup from "yup";
+
+const auth = getAuth(app);
+
+const schema = yup
+  .object({
+    email: yup.string().label("Email").email().required(),
+    password: yup.string().label("Password").required(),
+  })
+  .required();
 
 export default function LoginScreen() {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const {
     control,
     handleSubmit,
     formState: { errors },
+    setError,
+    getValues,
   } = useForm({
+    resolver: yupResolver(schema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
+
+  const login = () => {
+    const email = getValues("email");
+    const password = getValues("password");
+    setLoading(true);
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        // User signed in successfully.
+        // The onAuthStateChanged listener will handle the login state.
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+        if (errorCode === "auth/invalid-credential") {
+          setError("email", {
+            type: "manual",
+            message: "Invalid email or password",
+          });
+        } else {
+          setError("email", {
+            type: "manual",
+            message: "Error: " + errorCode,
+          });
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
   return (
     <SafeAreaView className="flex-1">
       <BackButton />
@@ -44,6 +92,9 @@ export default function LoginScreen() {
             )}
             name="email"
           />
+          {errors.email && (
+            <ErrorText>{errors.email.message?.toString()}</ErrorText>
+          )}
         </View>
         <View className="pb-3 pt-4">
           <Controller
@@ -74,12 +125,20 @@ export default function LoginScreen() {
             )}
             name="password"
           />
+          {errors.password && (
+            <ErrorText>{errors.password.message?.toString()}</ErrorText>
+          )}
         </View>
         <View className="ml-auto">
           <Anchor title="Forgot Password?" size="sm" />
         </View>
         <View className="pt-8">
-          <Button title="Login" style="primary" />
+          <Button
+            title="Login"
+            style="primary"
+            onPress={handleSubmit(login)}
+            loading={loading}
+          />
         </View>
         <View className="py-14 pb-10">
           <Divider text="OR" />

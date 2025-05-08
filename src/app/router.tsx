@@ -82,6 +82,7 @@ const RootStack = createNativeStackNavigator({
           screen: SplashScreen,
           options: {
             headerShown: false,
+            animation: "none",
           },
         },
         login: {
