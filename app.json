@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "React Native Playground",
-    "slug": "rn-playground",
+    "name": "React Native Launchkit",
+    "slug": "react-native-launchkit",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

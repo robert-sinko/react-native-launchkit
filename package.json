@@ -1,5 +1,5 @@
 {
-  "name": "rn-playground",
+  "name": "react-native-launchkit",
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
