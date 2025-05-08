@@ -1,12 +1,12 @@
-# rn-playground
+# React Native Launchkit
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/robert-sinko/rn-playground/refs/heads/main/assets/rn-playground.png" alt="rn-playground Logo" width="360">
+  <img src="https://github.com/user-attachments/assets/706a6fa8-9b05-4783-9bf5-de5248b862a4" alt="React Native Launchkit Presentation" width="480">
 </p>
 
 **A Clear Canvas for Rapid React Native Exploration, Inspired by Bulletproof React**
 
-`rn-playground` is designed to be a fast and easy-to-use playground for anyone looking to dive into React Native development. Embracing the principles of the [Bulletproof React project structure](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md), it comes pre-configured with popular integrations, allowing you to focus on building and experimenting within a well-organized and scalable foundation.
+`React Native Launchkit` is a streamlined starter project built to help you dive into React Native development quickly and confidently. Inspired by the [Bulletproof React project structure](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md), it comes pre-configured with popular tools and integrations—including full Expo + Firebase setup and essential authentication screens (sign in, sign up, sign out). With a clean, scalable foundation, you can focus on building, experimenting, and shipping faster.
 
 ## ✨ Key Features
 
@@ -27,28 +27,39 @@
 
 1.  **Clone the repository:**
 
-    ```bash
-    git clone https://github.com/robert-sinko/rn-playground
-    cd rn-playground
-    ```
+```bash
+git clone https://github.com/robert-sinko/react-native-launchkit
+cd react-native-launchkit
+```
 
 2.  **Install dependencies:**
 
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+```bash
+npm install
+# or
+yarn install
+```
 
-3.  **Start the Expo development server:**
+3.  **Set up firebase**
 
-    ```bash
-    npx expo start
-    # or
-    yarn start
-    ```
+- Create a new Firebase project.
+- Copy the example environment file:
 
-    This will open the Expo Go app on your simulator/emulator or physical device (if you have it set up).
+```bash
+cp .env.local.example .env.local
+```
+
+- Fill in the necessary Firebase credentials in .env.local.
+
+4.  **Start the Expo development server:**
+
+```bash
+npx expo start
+# or
+yarn start
+```
+
+This will open the Expo Go app on your simulator/emulator or physical device (if you have it set up).
 
 ## 🛠️ Included Integrations
 
@@ -104,7 +115,3 @@ src
 ## 🤝 Contributing
 
 Contributions are welcome! If you have ideas for improvements or find any issues, please feel free to open a pull request or submit an issue on GitHub.
-
-## 📄 License
-
-[Your Project License Here (e.g., MIT License)]
