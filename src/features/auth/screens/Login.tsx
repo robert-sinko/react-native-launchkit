@@ -145,17 +145,17 @@ export default function LoginScreen() {
         </View>
         <View className="flex-row gap-3 pt-4">
           <View className="flex-1">
-            <Button style="secondary">
+            <Button onPress={() => alert("TODO: facebook login")}>
               <FontAwesome name="facebook" size={24} color="#1877F2" />
             </Button>
           </View>
           <View className="flex-1">
-            <Button style="secondary">
+            <Button onPress={() => alert("TODO: google login")}>
               <GoogleLogo />
             </Button>
           </View>
           <View className="flex-1">
-            <Button>
+            <Button onPress={() => alert("TODO: apple login")}>
               <FontAwesome name="apple" size={24} />
             </Button>
           </View>
